@@ -230,13 +230,17 @@ class Admin_site
         }
     }
 
+//########################################################################
+
     function admin_footer($db)
     {
         include_once("admin_footer.php");
         return true;
-    }
+    } //end of function admin_footer
 
-    public static function securityCheck()
+//########################################################################
+
+    function securityCheck()
     {
         $children = array();
 
@@ -439,7 +443,23 @@ class Admin_site
         return $html;
     }
 
-    public static function error($message = "Error", $line = 0, $file = '', $isUserFriendly = true)
+//#########################################################################
+
+    function inputError($message = "Invalid input", $line, $file)
+    {
+        Admin_site::error($message, $line, $file);
+    }
+
+//#########################################################################
+
+    function requestError($message = "Invalid request", $line, $file)
+    {
+        Admin_site::error($message, $line, $file);
+    }
+
+//#########################################################################
+
+    function error($message = "Error", $line, $file, $isUserFriendly = true)
     {
         if ($isUserFriendly) {
             echo "
@@ -565,7 +585,9 @@ class Admin_site
             }
         }
         return true;
-    }
+    } //end of function get_page
+
+//########################################################################
 
     function get_price_plan_name($db, $price_plan_id = 0)
     {
@@ -586,7 +608,9 @@ class Admin_site
         } else {
             return false;
         }
-    }
+    } //end of function get_price_plan_name
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function get_price_plan($db, $price_plan_id = 0, $category_id = 0)
     {
@@ -780,7 +804,7 @@ class Admin_site
 	                      	" . geoUserRating::render($user_id) . "
 	                      	 <a href='index.php?mc=users&page=users_ratings_detail&b=$user_id' style='font-size: 0.9em;'>Rating Details</a>
 	                      </div>
-
+	
 						  <div style='font-size: 1.1rem; padding: 10px 0;'>";
 
             $address = ((strlen(trim($user_data["address"])) > 0) ? $user_data["address"] : "") .
@@ -852,7 +876,7 @@ class Admin_site
         $this->body .= geoHTML::addOption('Status:', $current_status);
 
         if ($user_data['admin_note']) {
-            $this->body .= geoHTML::addOption('Admin Note: ', nl2br(geoString::specialChars($user_data['admin_note'])));
+            $this->body .= geoHTML::addOption('Admin Note: ', nl2br(geoString::fromDB($user_data['admin_note'])));
         }
 
         if (strlen(trim($user_data["company_name"])) > 0) {
@@ -2159,9 +2183,6 @@ class Admin_site
     }
     function add_sub_categories_for_dropdown(&$show_category, $parent, $dropdown_limit = 0)
     {
-        if (empty($show_category[$parent])) {
-            return;
-        }
         $ids = array_keys($show_category[$parent]);
         foreach ($ids as $id) {
             $pre_stage = "";

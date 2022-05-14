@@ -42,7 +42,7 @@ unset($versions['beta']);
 #####New Versions Add HERE#######
 #####New Versions Add HERE#######
 
-# Add new versions to top.  Make sure to change the latest version.
+#Add new versions to top.  Make sure to change the latest version.
 # Don't forget to update updateFactory.php as well!
 
 $versions['20.0.0'] = [
@@ -51,46 +51,50 @@ $versions['20.0.0'] = [
 
 $versions['18.02.0'] = array(
     'to' => '20.0.0',
-    // Use older update to get new field that was missed in previous "new install" SQL snapshot
-    'folder' => '17.12.0'
+    'folder' => 'none',
 );
 
 $versions['17.12.0'] = array(
-    'to' => '20.0.0',
-    // Use older update to get new field that was missed in previous "new install" SQL snapshot
-    'folder' => '17.12.0'
+        'to' => '18.02.0',
+        'folder' => 'none',
+        'changelog' => '17.12.0/changelog.html'
 );
 
 $versions['17.10.0'] = array(
-    'to' => '20.0.0',
-    'folder' => '17.12.0'
+        'to' => '17.12.0',
+        'folder' => '17.12.0'
 );
 
 $versions['17.05.0'] = $versions['17.07.0'] = $versions['17.10.0'];
 
+
 $versions['17.04.0'] = array(
-        'to' => '20.0.0',
-        'folder' => '17.12.0'
+        'to' => '17.12.0',
+        'folder' => '17.12.0',
+        'changelog' => '17.04.0/changelog.html',
 );
 
 $versions['17.03.0'] = array(
         'to' => '17.07.0',
-        'folder' => '17.04.0'
+        'folder' => '17.04.0',
+
 );
 
 $versions['17.01.0'] = array(
     'to' => '17.03.0',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '17.01.0/changelog.html',
 );
 
 $versions['16.09.0'] = array(
         'to' => '17.01.0',
-        'folder' => '17.01.0'
+        'folder' => '17.01.0',
 );
 
 $versions['16.07.0'] = array(
     'to' => '16.09.0',
-    'folder' => '16.07.0'
+    'folder' => '16.07.0',
+    'changelog' => '16.07.0/changelog.html',
 );
 
 $versions['16.05.0'] = array(
@@ -100,8 +104,10 @@ $versions['16.05.0'] = array(
 
 $versions['16.03.0'] = array(
     'to' => '16.05.0',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '16.03.0/changelog.html',
 );
+
 
 $versions['16.02.1'] = array(
     'to' => '16.03.0',
@@ -110,7 +116,8 @@ $versions['16.02.1'] = array(
 
 $versions['16.02.0'] = array(
     'to' => '16.02.1',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '16.02.0/changelog.html',
 );
 
 $versions['7.6.3'] = array (
@@ -130,12 +137,13 @@ $versions['7.6.1'] = $versions['7.6.2'];
 
 $versions['7.6.0'] = array (
         'to' => '7.6.2',
-        'folder' => '7.6' // db fixes from 7.6.0 -> 7.6.1
+        'folder' => '7.6', // db fixes from 7.6.0 -> 7.6.1
+        'changelog' => '7.6/changelog.html',
 );
 
 $versions['7.5.3'] = array (
         'to' => '7.6.0',
-        'folder' => '7.6'
+        'folder' => '7.6',
 );
 
 $versions['7.5.2'] = array (
@@ -147,8 +155,10 @@ $versions['7.5.1'] = $versions['7.5.2'];
 
 $versions['7.5.0'] = array (
     'to' => '7.5.3',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '7.5/changelog.html',
 );
+
 
 $versions['7.4.6'] = array (
     'to' => '7.5.0',
@@ -166,8 +176,10 @@ $versions['7.4.1'] = $versions['7.4.2'] = $versions['7.4.3'] = $versions['7.4.4'
 
 $versions['7.4.0'] = array (
     'to' => '7.4.5',
-    'folder' => '7.4'
+    'folder' => '7.4',
+    'changelog' => '7.4/changelog.html',
 );
+
 
 $versions['7.3.6'] = array(
     'to' => '7.4.5',
@@ -188,18 +200,19 @@ $versions['7.3.4'] = array (
 
 $versions['7.3.4'] = array (
     'to' => '7.3.5',
-    'folder' => 'none'
+    'folder' => 'none',
     );
 $versions['7.3.1'] = $versions['7.3.2'] = $versions['7.3.3'] = $versions['7.3.4'];
 
 $versions['7.3.0'] = array (
     'to' => '7.3.5',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '7.3/changelog.html',
     );
 
 $versions['7.3rc2'] = array (
     'to' => '7.3.4',
-    'folder' => '7.3'
+    'folder' => '7.3',
     );
 
 //all the 7.3 beta / rc versions
@@ -211,17 +224,18 @@ $versions['7.2.6'] = array (
     'folder' => '7.3',
     //NOTE: norelease is fancy thingy for the changelog, this prevents changelog
     //from saying "versions 7.2.0 - 7.2.6"
-    'norelease' => true
+    'norelease' => true,
     );
 $versions['7.2.5'] = array (
     'to' => '7.2.6',
-    'folder' => '7.2'
+    'folder' => '7.2',
     );
 $versions['7.2.4'] = $versions['7.2.3'] = $versions['7.2.2'] = $versions['7.2.1'] = $versions['7.2.5'];
 
 $versions['7.2.0'] = array (
     'to' => '7.2.6',
-    'folder' => '7.2'
+    'folder' => '7.2',
+    'changelog' => '7.2/changelog.html',
 );
 
 //all the 7.2 beta versions
@@ -229,25 +243,26 @@ $versions['7.2beta1'] = $versions['7.2beta2'] = $versions['7.2beta3']
     = $versions['7.2beta4']
     = array (
         'to' => '7.2.6',
-        'folder' => '7.2'
+        'folder' => '7.2',
         );
 
 $versions['7.1.4'] = array (
     'to' => '7.2.6',
     'folder' => '7.2',
-    'norelease' => true
+    'norelease' => true,
     );
 
 $versions['7.1.3'] = array (
     'to' => '7.1.4',
-    'folder' => 'none'
+    'folder' => 'none',
     );
 $versions['7.1.2'] = $versions['7.1.3'];
 $versions['7.1.1'] = $versions['7.1.3'];
 
 $versions['7.1.0'] = array (
     'to' => '7.1.4',
-    'folder' => 'none'
+    'folder' => 'none',
+    'changelog' => '7.1/changelog.html',
     );
 
 //All the 7.1 beta versions
@@ -255,83 +270,93 @@ $versions['7.1.0beta1'] = $versions['7.1beta1'] = $versions['7.1beta2']
     = $versions['7.1beta3'] = $versions['7.1beta4'] = $versions['7.1beta5']
     = array (
         'to' => '7.1.4',
-        'folder' => '7.1'
+        'folder' => '7.1',
         );
 
 $versions['7.0.4'] = array (
     'to' => '7.1.4',
-    'folder' => '7.1'
+    'folder' => '7.1',
 );
 
 $versions['7.0.3'] = array (
     'to' => '7.1.4',
-    'folder' => '7.1'
+    'folder' => '7.1',
 );
 
 $versions['7.0.2'] = array (
     'to' => '7.1.4',
-    'folder' => '7.1'
+    'folder' => '7.1',
 );
 
 $versions['7.0.1'] = array (
     'to' => '7.0.4',
-    'folder' => '7.0'
+    'folder' => '7.0',
 );
 
 $versions['7.0.0'] = array (
     'to' => '7.0.4',
-    'folder' => '7.0'
+    'folder' => '7.0',
+    'changelog' => '7.0/changelog.html',
 );
 $versions['7.0.0beta'] = array (
     'to' => '7.0.4',
-    'folder' => '7.0'
+    'folder' => '7.0',
 );
 $versions['6.1.0beta'] = array (
     'to' => '7.0.4',
-    'folder' => '7.0'
+    'folder' => '7.0',
 );
 
 $versions['6.0.8'] = array (
     'to' => '7.0.4',
-    'folder' => '7.0'
+    //'changelog' => '6.0/changelog.html#milestone_6.0.8',
+    'folder' => '7.0',
 );
 $versions['6.0.7'] = array (
     'to' => '6.0.8',
-    'folder' => 'none'
+    //'changelog' => '6.0/changelog.html#milestone_6.0.7',
+    'folder' => 'none',
 );
 $versions['6.0.6'] = array (
     'to' => '6.0.8',
+    //'changelog' => '6.0/changelog.html#milestone_6.0.6',
     'folder' => 'none'
 );
 
 $versions['6.0.5'] = array (
     'to' => '6.0.8',
-    'folder' => 'none'
+    //'changelog' => '6.0/changelog.html#milestone_6.0.5',
+    'folder' => 'none',
 );
 
 $versions['6.0.4'] = array(
     'to' => '6.0.8',
-    'folder' => 'none'
+    //'changelog' => '6.0/changelog.html#milestone_6.0.4',
+    'folder' => 'none',
 );
 
 $versions['6.0.3'] = array(
     'to' => '6.0.8',
-    'folder' => '6.0'
+    'folder' => '6.0',
+    //'changelog' => '6.0/changelog.html#milestone_6.0.3'
 );
 
 $versions['6.0.2'] = array (
     'to' => '6.0.8',
-    'folder' => '6.0'
+    'folder' => '6.0',
+    //'changelog' => '6.0/changelog.html#milestone_6.0.2',
 );
 
 $versions['6.0.1'] = array (
     'to' => '6.0.8',
-    'folder' => '6.0'
+    'folder' => '6.0',
+    //'changelog' => '6.0/changelog.html#milestone_6.0.1',
 );
 
 $versions['6.0.0'] = array(
     'to' => '6.0.8',
-    'folder' => '6.0'
+    'folder' => '6.0',
+    'changelog' => '6.0/changelog.html',
 );
 
 $versions['6.0.0beta'] = array (

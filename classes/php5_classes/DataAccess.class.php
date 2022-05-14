@@ -56,7 +56,6 @@ class DataAccess
      * The real db accessor, no files should access this directly!
      *
      * @internal
-     * @var ADOConnection
      */
     private $db;
 
@@ -1274,6 +1273,7 @@ class DataAccess
         if ($cacheResult === false) {
             //get page data.
             trigger_error('DEBUG MODULE: DataAccess::moduleTag(' . $tag . ') - not from cache');
+
 
             //echo('DEBUG STATS: db::replaceTag( '.$tag.', '.$language_id.', '.$cat_id.', '.$logged_in.')<br />');
             if (geoCache::get('cache_module')) {

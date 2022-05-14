@@ -1,15 +1,28 @@
 <?php
 
-// GeoCoreCE needs this for Version numbers (current and latest available)
-// The other stuff may be able to be stripped.
-// Intellisense reports: Undefined constant 'DEMO_MODE_TEXT'.
-
 // DON'T FORGET THIS
 if (class_exists('admin_AJAX') or die()) {
 }
 
 class ADMIN_AJAXController_homeLicense extends admin_AJAX
 {
+
+    public function getNews()
+    {
+        //get news from RSS
+        require_once ADMIN_DIR . 'rss_news_reader.php';
+        // todo: maybe set up an RSS feed on geodesicsolutions.org
+        $reader = new rss_reader('http://geodesicsolutions.com/latest-software-news-blog.feed?type=rss');
+        $reader->setTitle('Geodesic Solutions News');
+        $reader->setMaxEntries(4);
+
+        $html = $reader->get_feed_html();
+
+        //see if addons want to add to it
+        $html .= geoAddon::triggerDisplay('admin_home_display_news');
+
+        echo $html;
+    }
 
     public function getLicenseData()
     {
@@ -59,9 +72,9 @@ class ADMIN_AJAXController_homeLicense extends admin_AJAX
             if ($settings['maxSeats'] == -1) {
                 $settings['maxSeats'] = 'Unlimited';
             }
-            $settings['currentSeats'] = 0;
+            $settings['currentSeats'] = geoSession::currentAdminSeats();
 
-            $settings['show_upgrade_pricing'] = false;
+            $settings['show_upgrade_pricing'] = (geoPC::is_ent()) ? false : true;
         }
 
         $tpl->assign($settings);
@@ -75,7 +88,7 @@ class ADMIN_AJAXController_homeLicense extends admin_AJAX
         $lease_extra = ' (Or at Lease Cancellation)';
 
         if ($exp === false) {
-            $exp = 'Unknown (Error checking geodesicsolutions site)';
+            $exp = 'Unknown (Error checking geodesicsolutions.com site)';
         } elseif ((!$exp || $exp == 'never') && $leased) {
             $exp = 'Never' . $lease_extra;
         } elseif (!$exp) {

@@ -1,3 +1,5 @@
+{* 6.0.7-3-gce41f93 *}
+
 <div class="col_hdr_top">Listing Videos</div>
 <br /><br />
 <div class="center">
@@ -7,8 +9,10 @@
 			<strong>Slot:</strong> {$video.slot}<br />
 			<strong>Youtube ID:</strong> {$video.video_id}
 		</p>
-        <iframe src="https://www.youtube.com/embed/{$video.media_content_url|escape}" width="480" height="390" title="YouTube video player" frameborder="0"
-        allow="encrypted-media"></iframe>
+		<object width="480" height="390">
+			<param name="movie" value="{$video.media_content_url}"></param>
+			<embed src="{$video.media_content_url}" type="{$video.media_content_type}" width="480" height="390"></embed>
+		</object>
 	</div>
 {/foreach}
 </div>

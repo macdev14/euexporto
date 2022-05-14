@@ -37,14 +37,22 @@ function image(&$template, $product_id, $error = 0)
         $template
     );
     $string = "<input name=config[url_image_directory] size=40 type=text ";
-    if (!empty($error['url_image_directory_value'])) {
-        $string .= "value=" . trim($error['url_image_directory_value']) . ">";
+    if (strlen(trim($error['url_image_directory_value'])) != 0) {
+        $string .= "value=" . $error['url_image_directory_value'] . ">";
     } else {
         // Check for specific image directory
-        $string .= "value=user_images/>";
+        if ($product_id == 1) {
+            $string .= "value=aucimages/>";
+        } elseif ($product_id == 2) {
+            $string .= "value=user_images/>";
+        } elseif ($product_id == 4) {
+            $string .= "value=images/>";
+        } else {
+            $string .= "value=user_images/>";
+        }
     }
     $template = str_replace("(!URL_PATH!)", $string, $template);
-    if (!empty($error['url_image_directory']) || !empty($error['file_perm'])) {
+    if ((strlen(trim($error['url_image_directory'])) != 0) || (strlen(trim($error['file_perm'])) != 0)) {
         $template = str_replace("(!URL_PATH_ERROR!)", $error['file_perm'], $template);
     } else {
         $template = str_replace("(!URL_PATH_ERROR!)", "", $template);
@@ -82,13 +90,13 @@ function image(&$template, $product_id, $error = 0)
         $template
     );
     $string = "<input name=config[abs_image_directory] size=55 type=text ";
-    if (!empty($error['abs_image_directory_value'])) {
+    if (strlen(trim($error['abs_image_directory_value'])) != 0) {
         $string .= "value=\"" . $error['abs_image_directory_value'] . "\">";
     } else {
         $string .= "value=\"" . $upload_path . "\">";
     }
     $template = str_replace("(!DIR_PATH!)", $string, $template);
-    if (!empty($error['abs_image_directory'])) {
+    if (strlen(trim($error['abs_image_directory'])) != 0) {
         $template = str_replace("(!DIR_PATH_ERROR!)", $error['abs_image_directory'], $template);
     } else {
         $template = str_replace("(!DIR_PATH_ERROR!)", "", $template);
@@ -101,7 +109,7 @@ function image(&$template, $product_id, $error = 0)
         $template
     );
     $string = "<input name=config[maximum_upload_size] type=text ";
-    if (!empty($error['maximum_upload_size'])) {
+    if (strlen($error['maximum_upload_size']) != 0) {
         $string .= "value = " . $error['maximum_upload_size_value'] . "> bytes";
         $template = str_replace("(!UPLOAD_SIZE_ERROR!)", $error['maximum_upload_size'], $template);
     } else {

@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../../',
+        'aliases' => array(),
+        'reference' => 'd0a0490037e3fdd8c837022da248a175cd6bae6d',
+        'name' => 'geodesicsolutions-community/geocore-community',
+        'dev' => false,
+    ),
+    'versions' => array(
+        'adodb/adodb-php' => array(
+            'pretty_version' => 'v5.22.0',
+            'version' => '5.22.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../adodb/adodb-php',
+            'aliases' => array(),
+            'reference' => 'd99127b8811a9f949c00ab425065e380dce6bdc1',
+            'dev_requirement' => false,
+        ),
+        'geodesicsolutions-community/geocore-community' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../../',
+            'aliases' => array(),
+            'reference' => 'd0a0490037e3fdd8c837022da248a175cd6bae6d',
+            'dev_requirement' => false,
+        ),
+        'stripe/stripe-php' => array(
+            'pretty_version' => 'v7.100.0',
+            'version' => '7.100.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../stripe/stripe-php',
+            'aliases' => array(),
+            'reference' => '3dfc3dcd5d967a14d2852f34e544188af5f9b799',
+            'dev_requirement' => false,
+        ),
+    ),
+);

@@ -1,7 +1,3 @@
-<?php
-$header = isset($header) ? $header : null;
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +39,7 @@ jQuery(function () {
                     <div id="login_left_list"></div>
                     <ul>
                         <li style="list-style-image: none; list-style: none;">&nbsp;</li>
-                        <li><a href="https://geodesicsolutions.org/wiki/" target="_blank">User Manual</a></li>
+                        <li><a href="https://geodesicsolutions.com/wiki/" target="_blank">User Manual</a></li>
                         <li><a href="https://github.com/geodesicsolutions-community/geocore-community/discussions"
                             target="_blank">Community Discussion</a></li>
                         <li><a href="https://geodesicsolutions.org" target="_blank">Website</a></li>

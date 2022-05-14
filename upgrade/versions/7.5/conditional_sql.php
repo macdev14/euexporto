@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This is where conditional queries go.
  * For cases where an sql query might not be run, in the
@@ -34,3 +33,4 @@ $sql_not_strict = array (
 //adjustments to messaging
 $sql_not_strict[] = "ALTER TABLE `geodesic_user_communications` ADD COLUMN `sender_deleted` TINYINT(1) NOT NULL DEFAULT '0'";
 $sql_not_strict[] = "ALTER TABLE `geodesic_user_communications` ADD COLUMN `receiver_deleted` TINYINT(1) NOT NULL DEFAULT '0'";
+

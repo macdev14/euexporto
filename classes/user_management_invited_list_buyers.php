@@ -2,18 +2,18 @@
 
 class Invited_list_buyers extends geoSite
 {
-    protected $users;
-    public $item_id;
-    public $user_id;
-    public $feedback_messages;
-    public $user_data;
-    public $search_error_message;
+
+    var $item_id;
+    var $user_id;
+    var $feedback_messages;
+    var $user_data;
+    var $search_error_message;
 
     // Debug variables
-    public $filename = "user_management_invited_list_buyers.php";
-    public $function_name;
+    var $filename = "user_management_invited_list_buyers.php";
+    var $function_name;
 
-    public $debug_invited = 0;
+    var $debug_invited = 0;
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -148,9 +148,9 @@ class Invited_list_buyers extends geoSite
                         $this->site_error();
                         return false;
                     } elseif ($check_result->RecordCount() == 0) {
-                        $this->sql_query = "insert into " . $this->invitedlist_table . "
+                        $this->sql_query = "insert into " . $this->invitedlist_table . " 
 							(seller_id,user_id)
-							values
+							values 
 							(" . $this->user_id . ", " . $users['user_id'][$i] . ")  ";
                         $insert_result = $db->Execute($this->sql_query);
                         if (!$insert_result) {

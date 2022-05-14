@@ -149,6 +149,9 @@ switch ($_REQUEST["a"]) {
 
     case 2:
         //display a classified
+        if (isset($get_execution_time) && $get_execution_time) {
+            get_end_time($starttime);
+        }
         include_once(CLASSES_DIR . "browse_display_ad.php");
         if (isset($_REQUEST['amp;b']) && !isset($_REQUEST['b'])) {
             $_REQUEST['b'] = $_REQUEST['amp;b'];
@@ -175,6 +178,9 @@ switch ($_REQUEST["a"]) {
             if (!$browse->main()) {
                 $browse->browse_error();
             }
+        }
+        if ($get_execution_time) {
+            get_end_time($starttime);
         }
         break;
 
@@ -1093,6 +1099,25 @@ switch ($_REQUEST["a"]) {
         }
         break;
 
+    case 22:
+        //extra page
+        $site = new geoSite();
+        if (($_REQUEST["b"]) && (is_numeric($_REQUEST["b"]))) {
+            if (!$site->extra_page($db, $_REQUEST["b"])) {
+                include_once(CLASSES_DIR . "browse_ads.php");
+                $browse = new Browse_ads($user_id, $language_id, 0, 0);
+                if (!$browse->main()) {
+                    $browse->browse_error();
+                }
+            }
+        } else {
+            include_once(CLASSES_DIR . "browse_ads.php");
+            $browse = new Browse_ads($user_id, $language_id, 0, 0);
+            if (!$browse->main()) {
+                $browse->browse_error();
+            }
+        }
+        break;
     case 25:
         //display sellers within a category
         //b will contain the category id
@@ -1117,7 +1142,7 @@ switch ($_REQUEST["a"]) {
         if (geoPC::is_ent()) {
             //classified voting
             include_once(CLASSES_DIR . "browse_vote.php");
-            $vote = new browse_vote($db, $user_id, $language_id, 0, $_REQUEST["page"], $_REQUEST["b"], 0, $product_configuration);
+            $vote = new Browse_vote($db, $user_id, $language_id, 0, $_REQUEST["page"], $_REQUEST["b"], 0, $product_configuration);
             if (($_REQUEST["b"]) && (is_numeric($_REQUEST["b"])) && ($_REQUEST["c"]) && (is_array($_REQUEST["c"]))) {
                 //collect the vote and go back to classified id
                 if (!$vote->collect_vote($_REQUEST["b"], $_REQUEST["c"])) {
@@ -1161,7 +1186,7 @@ switch ($_REQUEST["a"]) {
         if (geoPC::is_ent()) {
             //classified vote browsing
             include_once(CLASSES_DIR . "browse_vote.php");
-            $vote = new browse_vote($db, $user_id, $language_id, 0, $_REQUEST["page"], $_REQUEST["b"], 0, $product_configuration);
+            $vote = new Browse_vote($db, $user_id, $language_id, 0, $_REQUEST["page"], $_REQUEST["b"], 0, $product_configuration);
             if (($_REQUEST["b"]) && (is_numeric($_REQUEST["b"]))) {
                 if ($_REQUEST['d'] && is_numeric($_REQUEST['d'])) {
                     //delete this vote, then return to the browse votes page

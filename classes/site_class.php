@@ -1071,7 +1071,9 @@ jQuery(window).load(gjUtil.load);
         return $tpl->fetch("image_block/$galleryStyle.tpl");
     }
 
-    public function display_image_tag($db, $value, $for_gallery, $size, &$tpl)
+//####################################################################################
+
+    function display_image_tag($db, $value, $for_gallery = 0, $size = 'small', &$tpl)
     {
         if ($value['icon'] && !$value['thumb_url']) {
             //non-image file for which we want to display an icon
@@ -1893,6 +1895,21 @@ jQuery(window).load(gjUtil.load);
         return $t;
     }
 
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    /**
+     * Gets number of bids.  Do not use, use geoListing::bidCount() instead.
+     * @param null $db
+     * @param int $auction_id
+     * @deprecated In version 6.0.0, will be removed in future release, use geoListing::bidCount()
+     *   instead.
+     */
+    public function get_number_of_bids($db = 0, $auction_id)
+    {
+        return geoListing::bidCount($auction_id);
+    } //end of function get_number_of_bids
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     function DateDifference($interval, $date1, $date2)
     {
         $difference =  $date2 - $date1;
@@ -2008,7 +2025,9 @@ jQuery(window).load(gjUtil.load);
         return mktime($hour, $min, 0, $month, $day, $year);
     }
 
-    public function get_high_bidder_username($db, $auction_id, $reverse_auction = false)
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function get_high_bidder_username($db = 0, $auction_id, $reverse_auction = false)
     {
         if ($this->debug) {
             echo "<br>TOP OF GET_HIGH_BIDDER_USERNAME<Br>\n";

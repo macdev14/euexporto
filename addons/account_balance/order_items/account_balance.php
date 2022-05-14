@@ -1,5 +1,7 @@
 <?php
 
+//order_items/account_balance.php
+
 require_once CLASSES_DIR . PHP5_DIR . 'OrderItem.class.php';
 
 class account_balanceOrderItem extends geoOrderItem
@@ -11,6 +13,7 @@ class account_balanceOrderItem extends geoOrderItem
     protected $defaultProcessOrder = 25;
     const defaultProcessOrder = 25;
 
+    var $cost_added_to_cost_of_ad = false;
     public function displayInAdmin()
     {
         return true;
@@ -33,8 +36,7 @@ class account_balanceOrderItem extends geoOrderItem
         }
         $db = DataAccess::getInstance();
 
-        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM '
-            . geoTables::userdata_table . ' WHERE `id` = ' . intval($user_id);
+        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM ' . geoTables::userdata_table . ' WHERE `id` = ' . intval($user_id);
         $user_data = $db->GetRow($sql);
 
         if ($user_data === false) {
@@ -80,9 +82,7 @@ class account_balanceOrderItem extends geoOrderItem
         }
         $status .= "<br />
 		<form action='index.php?page=users_view&amp;b=$user_id' method='post' id='account_balance_status'>
-			<select name='account_balance[status]' style='border: 1px solid lightblue;'
-                onchange='document.forms.account_balance_status.submit()'
-            >
+			<select name='account_balance[status]' style='border: 1px solid lightblue;' onchange='document.forms.account_balance_status.submit()'>
 				<option value='0' $c0>Fully Active</option>
 				<option value='1' $c1>Freeze Draws, Allow Adding, Auto Activate</option>
 				<option value='2' $c2>Freeze Draws, Allow Adding</option>
@@ -93,13 +93,9 @@ class account_balanceOrderItem extends geoOrderItem
         $html = geoHTML::addOption('Account Balance', geoString::displayPrice($user_data['account_balance']));
 
         if ($user_data['account_balance'] < 0) {
-            $last_positive = ($user_data['date_balance_negative'] > 10) ?
-                date("M d,Y G:i - l", $user_data["date_balance_negative"]) : 'Unknown';
+            $last_positive = ($user_data['date_balance_negative'] > 10) ? date("M d,Y G:i - l", $user_data["date_balance_negative"]) : 'Unknown';
             //reset to current time
-            $last_positive .= " " . geoHTML::addButton(
-                'Reset',
-                "index.php?page=users_view&b=$user_id&account_balance[reset_negative_balance_date]=1&auto_save=1"
-            );
+            $last_positive .= " " . geoHTML::addButton('Reset', "index.php?page=users_view&amp;b=$user_id&amp;account_balance[reset_negative_balance_date]=1&auto_save=1");
             $html .= geoHTML::addOption('Balance Negative Since:', $last_positive);
         }
 
@@ -121,8 +117,7 @@ class account_balanceOrderItem extends geoOrderItem
 
         $db = DataAccess::getInstance();
 
-        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM '
-            . geoTables::userdata_table . ' WHERE `id` = ' . $user_id;
+        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM ' . geoTables::userdata_table . ' WHERE `id` = ' . $user_id;
         $user_data = $db->GetRow($sql);
 
         if ($user_data === false) {
@@ -132,8 +127,7 @@ class account_balanceOrderItem extends geoOrderItem
 
         if ($user_data['account_balance'] < 0) {
             if (isset($data['reset_negative_balance_date']) && $data['reset_negative_balance_date']) {
-                $sql = "UPDATE " . geoTables::userdata_table
-                    . " SET `date_balance_negative`=? WHERE `id`=$user_id LIMIT 1";
+                $sql = "UPDATE " . geoTables::userdata_table . " SET `date_balance_negative`=? WHERE `id`=$user_id LIMIT 1";
                 $db->Execute($sql, array(geoUtil::time()));
                 $user_data["date_balance_negative"] = geoUtil::time();
             }
@@ -152,8 +146,7 @@ class account_balanceOrderItem extends geoOrderItem
             return;
         }
         $db = DataAccess::getInstance();
-        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM '
-            . geoTables::userdata_table . ' WHERE `id` = ' . intval($user_id);
+        $sql = 'SELECT `account_balance`, `date_balance_negative`, `balance_freeze` FROM ' . geoTables::userdata_table . ' WHERE `id` = ' . intval($user_id);
         $user_data = $db->GetRow($sql);
 
         if ($user_data === false) {
@@ -167,9 +160,7 @@ class account_balanceOrderItem extends geoOrderItem
 					<div class='col-xs-12 col-xs-6'>
 						<div class='input-group'>
 							<div class='input-group-addon'>" . $db->get_site_setting('precurrency') . "</div>
-								<input type='text' class='form-control' name='account_balance[balance]'
-                                    id='accountBalanceInput' value='{$balance}' size='5'
-                                />
+								<input type='text' class='form-control' name='account_balance[balance]' id='accountBalanceInput' value='{$balance}' size='5' />
 								<div class='input-group-addon'>" . $db->get_site_setting('postcurrency') . "</div>
 							</div>
 						</div>
@@ -196,12 +187,9 @@ class account_balanceOrderItem extends geoOrderItem
 		";
 
         if ($user_data['account_balance'] < 0) {
-            $last_positive = ($user_data['date_balance_negative'] > 10) ?
-                date("M d,Y G:i - l", $user_data["date_balance_negative"]) : 'Unknown';
+            $last_positive = ($user_data['date_balance_negative'] > 10) ? date("M d,Y G:i - l", $user_data["date_balance_negative"]) : 'Unknown';
             //reset to current time
-            $last_positive .= " <a href='index.php?page=users_view&b=$user_id"
-                . "&account_balance[reset_negative_balance_date]=1&auto_save=1'
-                class='btn btn-xs btn-danger'>Reset</a>" . geoHTML::addButton('Reset', "");
+            $last_positive .= " <a href='index.php?page=users_view&amp;b=$user_id&amp;account_balance[reset_negative_balance_date]=1&auto_save=1' class='btn btn-xs btn-danger'>Reset</a>" . geoHTML::addButton('Reset', "");
             $html .= "<div class='form-group'>
 						<label class='control-label col-xs-12 col-sm-4'>Balance Negative Since:</label>
 						<div class='col-xs-12 col-sm-6 vertical-form-fix'>
@@ -249,9 +237,7 @@ class account_balanceOrderItem extends geoOrderItem
         }
         $status .= "<br />
 
-			<select name='account_balance[status]' class='form-control'
-                onchange='document.forms.account_balance_status.submit()'
-            >
+			<select name='account_balance[status]' class='form-control' onchange='document.forms.account_balance_status.submit()'>
 				<option value='0' $c0>Fully Active</option>
 				<option value='1' $c1>Freeze Draws, Allow Adding, Auto Activate</option>
 				<option value='2' $c2>Freeze Draws, Allow Adding</option>
@@ -349,13 +335,8 @@ class account_balanceOrderItem extends geoOrderItem
         $msgs = $cart->db->get_text(true, 10202);
         $gateway = geoPaymentGateway::getPaymentGateway(self::type);
         $min = $gateway->get('min_add_to_balance');
-        if (
-            $cart->user_data['account_balance'] < 0
-            && $min > abs($cart->user_data['account_balance'])
-            && !$gateway->get('allow_positive')
-        ) {
-            //the amount they owe is less than the min amount they are allowed to add, they are not allowed to go
-            //positive
+        if ($cart->user_data['account_balance'] < 0 && $min > abs($cart->user_data['account_balance']) && !$gateway->get('allow_positive')) {
+            //the amount they owe is less than the min amount they are allowed to add, they are not allowed to go positive
             //so set the min_add to be the amount they owe
             $min = abs($cart->user_data['account_balance']);
         }
@@ -444,8 +425,7 @@ class account_balanceOrderItem extends geoOrderItem
         $children = array();
         foreach ($keys as $i) {
             if (is_object($items[$i]) && is_object($items[$i]->getParent())) {
-                $item = $items[$i];
-                $p = $item->getParent();
+                $p = $items[$i]->getParent();
                 if ($p->getId() == $this->getId()) {
                     //This is a child of mine...
                     $displayResult = $item->getDisplayDetails($inCart, $inEmail);
@@ -534,7 +514,7 @@ class account_balanceOrderItem extends geoOrderItem
         }
 
         geoPaymentGateway::setGroup($cart->user_data['group_id']);
-        $planItem = geoPaymentGateway::getPaymentGateway('account_balance');
+        $planItem = geoPaymentGateway::getPaymentGateway('account_balance');//geoPlanItem::getPlanItem('account_balance',$cart->price_plan['price_plan_id'],0);
 
         if (!is_object($planItem) || !$planItem->getEnabled()) {
             return '';
@@ -630,11 +610,14 @@ class account_balanceOrderItem extends geoOrderItem
 
     private static function _updateBalance($userId, $new_balance)
     {
+        $db = DataAccess::getInstance();
         $user = geoUser::getUser($userId);
 
         if (!$user) {
             return;
         }
+        $mult = ($newStatus == 'active') ? 1 : -1;
+        $activate = ($newStatus == 'active') ? 1 : 0;
         if ($new_balance >= 0) {
             //make sure the date_balance_negative is reset to 0 since account balance is no longer negative.
             $user->date_balance_negative = 0;
@@ -727,11 +710,10 @@ class account_balanceOrderItem extends geoOrderItem
             $label = $msgs[2538];
 
             $display_amount = geoString::displayPrice($user->account_balance);
-            $add_money_link = ($db->get_site_setting('use_ssl_in_sell_process')) ?
-                $db->get_site_setting('classifieds_ssl_url') : $db->get_site_setting('classifieds_file_name');
+            $add_money_link = ($db->get_site_setting('use_ssl_in_sell_process')) ? $db->get_site_setting('classifieds_ssl_url') : $db->get_site_setting('classifieds_file_name');
             $add_money_link .= '?a=cart&amp;action=new&amp;main_type=account_balance';
 
-            return ['label' => $label, 'value' => "$display_amount <a href=\"$add_money_link\">{$msgs[2539]}</a>"];
+            return array ('label' => $label, 'value' => "$display_amount <a href=\"$add_money_link\">{$msgs[2539]}</a>");
         }
     }
 

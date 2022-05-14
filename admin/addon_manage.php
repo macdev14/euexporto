@@ -2,25 +2,26 @@
 
 class Addon_Manage
 {
+
     const AUTO_UPLOAD = false;
 
-    public $addons;
+    var $addons;
 
     /**
      * Db class
      *
      * @var DataAccess
      */
-    public $db;
+    var $db;
 
     /**
      * Addon class
      *
      * @var geoAddon
      */
-    public $addon;
+    var $addon;
 
-    public $actions_exclusive;
+    var $actions_exclusive;
     public function __construct()
     {
          //if we cant find the admin site object, we cant do squat!
@@ -39,7 +40,7 @@ class Addon_Manage
      *
      * @return boolean
      */
-    public function autoUpload()
+    function autoUpload()
     {
 
         if (!$_FILES['auto_installer']) {
@@ -382,7 +383,7 @@ class Addon_Manage
             if (isset($addon['info']->exclusive) && $addon['info']->exclusive && isset($addon['info']->core_events) && count($addon['info']->core_events)) {
                 //show any details if there are conflicts.
                 foreach ($addon['info']->core_events as $action) {
-                    if (!empty($this->actions_exclusive[$action]) && count($this->actions_exclusive[$action]) > 1) {
+                    if (count($this->actions_exclusive[$action]) > 1) {
                         foreach ($this->actions_exclusive[$action] as $other_addon) {
                             if ($other_addon->name != $addon['info']->name && $this->addons[$other_addon->name]['db']['enabled']) {
                                 $enable = '--Conflicts--';

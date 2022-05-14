@@ -28,15 +28,6 @@ error_reporting(E_ALL ^ (E_NOTICE | E_DEPRECATED));
 
 define('DB_TYPE', (isset($db_type) && strlen($db_type)) ? $db_type : 'mysqli');
 
-$step = $urlStep = null;
-if (isset($_GET['step'])) {
-    $step = $_GET['step'];
-    $urlStep = $step;
-} elseif (isset($_REQUEST['a'])) {
-    $step = $_REQUEST['a'];
-} else {
-    $step = 'requirements';
-}
 $step = (isset($_GET["step"])) ? $_GET['step'] : ((isset($_REQUEST['a'])) ? $_REQUEST['a'] : 'requirements');
 
 if ($step !== 'requirements') {
@@ -48,7 +39,7 @@ if ($step !== 'requirements') {
 
 if ($step !== 'requirements' && $step !== 'config.php' && $step !== 'dbtest' && $step !== 'config.php_check') {
     $db = ADONewConnection(DB_TYPE);
-    if (!empty($persistent_connections)) {
+    if ($persistent_connections) {
         if (!$db->PConnect($db_host, $db_username, $db_password, $database)) {
             echo "ERROR!!!  Could not connect to database.<br>";
             exit;
@@ -85,7 +76,6 @@ if (in_array($step, $redoneSteps)) {
         //ugly hack, need to re-do the setup process to not use product type...
         $product_type = 4;
     }
-    $urlStep = isset($_GET['step']) ? $_GET['step'] : 'no-step-in-url';
     switch ($step) {
         case 'config.php':
             /*  Start Checking config.php info  */
@@ -113,9 +103,8 @@ if (in_array($step, $redoneSteps)) {
             /*  End Database connections    */
             break;
 
-        case $urlStep:
+        case $_GET['step']:
             // This one is odd but...
-            // It means it is running one of the SQL steps.
         case 'sql':
             /*  Start running sql statements    */
             include_once("sql.php");

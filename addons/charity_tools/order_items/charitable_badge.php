@@ -38,7 +38,7 @@ class charitable_badgeOrderItem extends geoOrderItem
 
         $tpl = new geoTemplate('addon', 'charity_tools');
         $tpl->assign($tpl_vars);
-        return $tpl->fetch('addon/charity_tools/admin/plan_settings.tpl');
+        return $tpl->fetch('admin/plan_settings.tpl');
     }
 
     /**
@@ -205,7 +205,7 @@ class charitable_badgeOrderItem extends geoOrderItem
             );
         }
 
-        if (empty($tpl_vars['badges'])) {
+        if (!count($tpl_vars['badges'])) {
             //no badges active for this region. nothing to show
             return '';
         }
@@ -216,7 +216,7 @@ class charitable_badgeOrderItem extends geoOrderItem
         $return = array (
             'checkbox_name' => '', //manually created checkbox
             'title' => '',
-            'help_id' => null,//manually created
+            'help_id' => $tooltip,//manually created
             'price_display' => '',
             //templates - over-write mini-template to do things like set margine or something:
             'entire_box' => $tpl->fetch('charitable_badge_choices.tpl'),

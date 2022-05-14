@@ -218,7 +218,7 @@ class addon_exporter_admin extends addon_exporter_info
             $feed->where("$classTable.`featured_ad_5` = 1");
         }
 
-        if (!empty($settings['category']) && count($settings['category']) > 1) {
+        if (count($settings['category']) > 1) {
             $cats = implode(', ', $settings['category']);
             $catListTable = geoTables::listing_categories;
 
@@ -227,7 +227,7 @@ class addon_exporter_admin extends addon_exporter_info
             $feed->where("EXISTS ($subQuery)", 'category');
             //we just did category filtering, so don't need listingfeed to do it.
             $feed->catId = 0;
-        } elseif (!empty($settings['category']) && count($settings['category'])) {
+        } elseif (count($settings['category'])) {
             //single category... easy, let feed do it
             $feed->catId = $settings['category'][0];
         }
@@ -287,11 +287,11 @@ class addon_exporter_admin extends addon_exporter_info
             $feed->categoryName = 1;
         }
 
-        if (!empty($settings['show_extra']) && in_array('img_url_all', $settings['show_extra'])) {
+        if (in_array('img_url_all', $settings['show_extra'])) {
             //show all images
             $feed->imageCount = 0;
             $settings['show'][] = 'image';
-        } elseif (!empty($settings['show_extra']) && in_array('img_url_1', $settings['show_extra'])) {
+        } elseif (in_array('img_url_1', $settings['show_extra'])) {
             //show first image
             $feed->imageCount = 1;
             $settings['show'][] = 'image';
@@ -300,7 +300,7 @@ class addon_exporter_admin extends addon_exporter_info
             $feed->imageCount = -1;
         }
 
-        if (!empty($settings['show_extra']) && in_array('extra_questions', $settings['show_extra'])) {
+        if (in_array('extra_questions', $settings['show_extra'])) {
             $feed->extraQuestions = 1;
         }
         //remove the currency fields if they exist...
@@ -318,9 +318,7 @@ class addon_exporter_admin extends addon_exporter_info
         $feed->debug = false;
 
         //let whoever needs to know, this is being called in an RSS feed file...
-        if (!defined('IN_GEO_RSS_FEED')) {
-            define('IN_GEO_RSS_FEED', 1);
-        }
+        define('IN_GEO_RSS_FEED', 1);
 
         //This is a generic feed (we'll be manually configuring all the options)
         $feed->setFeedType(geoListingFeed::GENERIC_FEED);
@@ -328,7 +326,7 @@ class addon_exporter_admin extends addon_exporter_info
         $feed->clean_all = 1;
         $feed->tpl_type = geoTemplate::ADDON;
         $feed->tpl_resource = $this->name;
-        $feed->tpl_file = 'addon/exporter/admin/export_types/xml.tpl';
+        $feed->tpl_file = 'admin/export_types/xml.tpl';
 
         $feed->generateSql();
 
@@ -537,7 +535,8 @@ class addon_exporter_admin extends addon_exporter_info
 
     function get_all_subcategories_for_dropdown($dropdown_limit = 0, $category_id = 0)
     {
-        $db = DataAccess::getInstance();
+        $db = true;
+        include(GEO_BASE_DIR . 'get_common_vars.php');
         $sql = 'SELECT ' . $db->geoTables->categories_table . ".category_id as category_id,
 			" . $db->geoTables->categories_table . ".parent_id as parent_id," . $db->geoTables->categories_languages_table . ".category_name as category_name
 			FROM " . $db->geoTables->categories_table . "," . $db->geoTables->categories_languages_table .
@@ -576,7 +575,8 @@ class addon_exporter_admin extends addon_exporter_info
     }
     function getStatesOptions()
     {
-        $db = DataAccess::getInstance();
+        $db = true;
+        include GEO_BASE_DIR . "get_common_vars.php";
 
         $result = $db->GetAll("select abbreviation,name from {$db->geoTables->states_table} order by abbreviation");
         if (false === $result) {
@@ -595,7 +595,8 @@ class addon_exporter_admin extends addon_exporter_info
 
     function getCountriesOptions()
     {
-        $db = DataAccess::getInstance();
+        $db = true;
+        include GEO_BASE_DIR . "get_common_vars.php";
 
         $result = $db->GetAll("select abbreviation,name from {$db->geoTables->countries_table} order by abbreviation");
         if (false === $result) {

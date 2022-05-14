@@ -1,11 +1,14 @@
 <?php
 
+//addons/attention_getters/admin.php
+
+# Attention Getters Addon
 require_once ADDON_DIR . 'attention_getters/info.php';
 class addon_attention_getters_admin extends addon_attention_getters_info
 {
-    private $admin_site;
-    private $db;
-    public function __construct()
+    var $admin_site;
+    var $db;
+    function addon_attention_getters_admin()
     {
         if (Singleton::isInstance('Admin_site')) {
             if (strlen(PHP5_DIR)) {
@@ -22,21 +25,13 @@ class addon_attention_getters_admin extends addon_attention_getters_info
         }
     }
 
-    public function init_pages()
+    function init_pages()
     {
         //menu_page::addonAddPage($index, $parent, $title, $addon_name, $image, $type);
         menu_page::addonAddPage('listing_attention_getters_view', '', 'Settings', 'attention_getters', 'fa-flag');
-        menu_page::addonAddPage(
-            'listing_attention_getters_delete',
-            'listing_attention_getters_view',
-            'Delete Attention Getter',
-            'attention_getters',
-            'fa-flag',
-            'sub_page'
-        );
+        menu_page::addonAddPage('listing_attention_getters_delete', 'listing_attention_getters_view', 'Delete Attention Getter', 'attention_getters', 'fa-flag', 'sub_page');
     }
-
-    public function init_text()
+    function init_text($language_id)
     {
         $return_var['yes'] = array (
             'name' => 'Attention Getter Yes Option',
@@ -71,8 +66,7 @@ class addon_attention_getters_admin extends addon_attention_getters_info
 
         return $return_var;
     }
-
-    public function display_listing_attention_getters_view()
+    function display_listing_attention_getters_view()
     {
         //view list of all attention getters
 
@@ -82,10 +76,8 @@ class addon_attention_getters_admin extends addon_attention_getters_info
             $this->admin_site->site_error($this->db->ErrorMsg());
             return false;
         }
-        $body = '';
         if (isset($this->admin_site->error_message) || isset($this->admin_site->site_result_message)) {
-            $body .= '<span class="medium_error_font">' . $this->admin_site->site_result_message . '<br />'
-                . $this->admin_site->error_message . '</span>';
+            $body .= '<span class="medium_error_font">' . $this->admin_site->site_result_message . '<br />' . $this->admin_site->error_message . '</span>';
         }
         $body .= "<form action=\"\" method=\"POST\" class=\"form-horizontal form-label-left\">\n";
         $body .= "<fieldset id='CurAttnGtrs'>
@@ -132,7 +124,7 @@ class addon_attention_getters_admin extends addon_attention_getters_info
             ->addBody($body);
     }
 
-    public function display_listing_attention_getters_delete()
+    function display_listing_attention_getters_delete()
     {
         //delete an attention getter
         if (PHP5_DIR) {
@@ -153,7 +145,7 @@ class addon_attention_getters_admin extends addon_attention_getters_info
     }
 
 
-    public function update_listing_attention_getters_view()
+    function update_listing_attention_getters_view()
     {
         if (isset($_POST['autoLoadDir']) && $_POST['autoLoadDir']) {
             //auto-add specified dir
@@ -197,7 +189,9 @@ class addon_attention_getters_admin extends addon_attention_getters_info
         return false;
     }
 
-    public function delete_attention_getter($attention_getter_id = 0)
+//*************************************************************************
+
+    function delete_attention_getter($attention_getter_id = 0)
     {
         if ($attention_getter_id) {
             $sql_query = "delete from  " . $this->db->geoTables->choices_table . " where choice_id = " . $attention_getter_id;
@@ -211,5 +205,5 @@ class addon_attention_getters_admin extends addon_attention_getters_info
             $this->admin_site->error_message = $this->admin_site->internal_error_message;
             return false;
         }
-    }
+    } //end of function delete_attention_getter
 }

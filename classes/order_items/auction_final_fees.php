@@ -1,5 +1,9 @@
 <?php
 
+//order_items/auction_final_fees.php
+
+
+
 class auction_final_feesOrderItem extends geoOrderItem
 {
     protected $type = "auction_final_fees";
@@ -152,7 +156,7 @@ class auction_final_feesOrderItem extends geoOrderItem
         }
         //see if there are any listing auctions that will have final fees on them
         $items = $cart->order->getItem('auction');
-        if (empty($items)) {
+        if (count($items) == 0) {
             //no auctions!
             return;
         }
@@ -855,7 +859,7 @@ class auction_final_feesOrderItem extends geoOrderItem
 
         //now see if there are any items in the order that might be getting final fees:
         $items = $cart->order->getItem('auction');
-        if (empty($items)) {
+        if (count($items) == 0) {
             //no auctions found
             return;
         }
