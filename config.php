@@ -17,11 +17,18 @@ The information below is required to connect the software to your MySQL
 database.
 */
 
-$db_host = "localhost";//location of sql host - usually localhost
+$db_host = "sql125.main-hosting.eu";//location of sql host - usually localhost
+
 $db_username = "u569026416_eucompro";//username used to connect to database
 $db_password = "3C[x#fH?";//password used to connect to database
 $database = "u569026416_eucompro";//name of database
 
+// development
+/* 
+$db_username = "u569026416_eucompro_dev"; //username used to connect to database
+$db_password = "ud&LT@zxDn7";//password used to connect to database
+$database = "u569026416_eucompro_dev";//name of database
+*/
 //MySQL "strict mode" - set to 1 if you have MySQL 5.0 or higher, that runs in "strict mode".
 // In most cases, this should be on by default.
 // Set it to 0 if needed for compatibility with very old versions of MySQL
