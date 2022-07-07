@@ -764,8 +764,8 @@ footer.page {
 	}
 	
 	.regions h2.title {
-		background: #34a8c4 none repeat scroll 0 0;
-		border-color: #2F95AE;
+		background: #000000 none repeat scroll 0 0;
+		border-color: #000000;
 		border-width: 0 0 2px;
 		color: #fff;
 	}
@@ -785,11 +785,11 @@ footer.page {
 	}
 	.mini-cart,
 	.category_navigation_box {
-		-moz-border-bottom-colors: #64b3da;
-		-moz-border-left-colors: #64b3da;
-		-moz-border-right-colors: #64b3da;
+		-moz-border-bottom-colors: #000000;
+		-moz-border-left-colors: #000000;
+		-moz-border-right-colors: #000000;
 		-moz-border-top-colors: none;
-		border-color: #64b3da;
+		border-color: #000000;
 		background: none no-repeat scroll 50% 50% #f4f9ff;
 		border-radius: 0 0 10px 10px;
 		border-style: none solid solid;
