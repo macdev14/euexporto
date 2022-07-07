@@ -19,9 +19,9 @@ database.
 
 $db_host = "sql125.main-hosting.eu";//location of sql host - usually localhost
 
-$db_username = "u569026416_eucompro";//username used to connect to database
-$db_password = "3C[x#fH?";//password used to connect to database
-$database = "u569026416_eucompro";//name of database
+$db_username = "u569026416_euexporto";//username used to connect to database
+$db_password = "sSn!dfDdZ6[_exporto2002";//password used to connect to database
+$database = "u569026416_euexporto";//name of database
 
 // development
 /* 
