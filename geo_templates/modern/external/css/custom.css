@@ -128,7 +128,7 @@ a.button:hover,
 	text-shadow: none;
 	transition-duration: 0.2s;
 	white-space: nowrap;
-	border-radius: 2px;
+	border-radius: 0px;
 	margin-top: 20px;
 	margin-left:20px;
 }
@@ -194,6 +194,7 @@ a.button:hover,
 	padding: 5px;
 	width: 85%;
 	border-radius: 0px;
+	margin-top:10px;
 }
 
 .logo-search-container .form-wrapper button::before {
@@ -206,6 +207,7 @@ a.button:hover,
 
 .logo-search-container .form-wrapper button .glyphicon {
 	top: -1px;
+	margin-top:10px;
 }
 
 .logo-box .logo img {
