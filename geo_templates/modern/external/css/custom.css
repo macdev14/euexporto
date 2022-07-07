@@ -203,11 +203,12 @@ a.button:hover,
 
 .logo-search-container .form-wrapper button {
 	height: 35px;
+	margin-top:10px;
 }
 
 .logo-search-container .form-wrapper button .glyphicon {
 	top: -1px;
-	margin-top:10px;
+
 }
 
 .logo-box .logo img {
