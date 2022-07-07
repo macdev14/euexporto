@@ -29,6 +29,9 @@ h3 {
     margin: 0;
 }
 
+
+
+
 h1.title a:visited,
 h2.title a:visited,
 h3.title a:visited,
@@ -85,7 +88,7 @@ h1.search_title,
 
 .tabList li:hover,
 .tabList li.activeTab {
-    color: #34A8C4;
+    color: #000000;
 }
 
 .price-tag,
@@ -125,6 +128,9 @@ a.button:hover,
 	text-shadow: none;
 	transition-duration: 0.2s;
 	white-space: nowrap;
+	border-radius: 2px;
+	margin-top: 20px;
+	margin-left:20px;
 }
 
 .header-button-container {
@@ -172,12 +178,13 @@ a.button:hover,
 	margin: 0 auto;
 	padding: 1px;
 	width: 100%;
+	margin-top: 20px;
 }
 
 .logo-search-container .form-wrapper input {
-	background: #f9f9f8 none repeat scroll 0 0;
-	box-shadow: 0 1px 2px #e9e9e8 inset, 0 0 0 1000px #fbfbfa inset;
-	border: thin solid #ccc;
+	/* background: #f9f9f8 none repeat scroll 0 0; */
+	/* box-shadow: 0 1px 2px #e9e9e8 inset, 0 0 0 1000px #fbfbfa inset; */
+	border: thin solid rgb(0, 0, 0);
 	border-radius: 4px 0 0 4px;
 	-webkit-border-radius: 4px 0 0 4px;
 	-moz-border-radius: 4px 0 0 4px;
@@ -186,6 +193,7 @@ a.button:hover,
 	height: 35px;
 	padding: 5px;
 	width: 85%;
+	border-radius: 0px;
 }
 
 .logo-search-container .form-wrapper button::before {
@@ -201,17 +209,21 @@ a.button:hover,
 }
 
 .logo-box .logo img {
-	max-height: 60px;
+	margin:0px;
+	max-height: 120px;
+	margin-right: 50px;
 }
 
 .form-wrapper button {
     background: #000000 none repeat scroll 0 0;
+	margin-top: 20px;
+	border-radius: 0px;
 }
 
 .form-wrapper button:active,
 .form-wrapper button:focus,
 .form-wrapper button:hover{		
-    background: #393939;
+    background: #000000af;
 }
 
 .form-wrapper button:before {
@@ -220,6 +232,10 @@ a.button:hover,
 
 .form-wrapper button:hover:before{
     border-right-color: #000000;
+}
+
+.form-wrapper input{
+	background: #FFFFFF;
 }
 
 .form-wrapper input:focus {
@@ -333,7 +349,12 @@ footer.page {
 }
 
 .item-in-progress {
-    color: #34a8c4;
+    color: #000000;
+}
+
+::selection{
+	background:#000000;
+	text-shadow:none;
 }
 
 .design2016 h1.title, .design2016 h2.title, .design2016 h3.title, .design2016 h4.title {
@@ -349,7 +370,7 @@ footer.page {
 }
 
 .design2016 h2.title {
-	border-color: #d5dce1 #d5dce1 #F66303;
+	border-color: #d5dce1 #d5dce1 #000000;
 	text-align: left;
 }
 
@@ -366,7 +387,7 @@ footer.page {
 }
 
 .design2016 h1.my_account {
-	border-bottom: 2px dotted #535353;
+	border-bottom: 2px dotted #000000;
 	color: #535353;
 }
 
@@ -648,6 +669,7 @@ footer.page {
 		text-shadow: none;
 		transition-duration: 0.2s;
 		white-space: nowrap;
+		border-radius: 0px;
 	}
 	
 	.main_classified_navigation ul li.element {
@@ -665,7 +687,7 @@ footer.page {
 	}
 	.main_classified_navigation ul li a:hover {
 		color: #000;
-		border-bottom: medium solid #f66303;
+		border-bottom: medium solid #3a3a3a;
 	}
 	.header-container .category_column {
 		width: auto !important;
