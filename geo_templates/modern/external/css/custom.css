@@ -80,7 +80,7 @@ h1.print_title,
 h1.search_title,
 .breadcrumb .active,
 .price {
-    color: #52B69A;
+    color: #000000;
 }
 
 .tabList li:hover,
@@ -90,11 +90,11 @@ h1.search_title,
 
 .price-tag,
 .column_header {
-    background: #52B69A none repeat scroll 0 0;
+    background: #000000 none repeat scroll 0 0;
 }
 
 .user-profile-cntnr {
-    border: 1px dotted #52B69A;
+    border: 1px dotted #000000;
 }
 
 .design2016 .button:visited,
@@ -111,12 +111,12 @@ a.button:hover,
 .header-button:hover,
 .header-button {
 	background: #fff none repeat scroll 0 0;
-	border: thin solid #0192b5;
+	border: thin solid #000000;
 	border-radius: 0.3em;
 	-webkit-border-radius: 0.3em;
 	-moz-border-radius: 0.3em;
 	box-shadow: none;
-	color: #0192b5;
+	color: #000000;
 	display: inline-block;
 	font-weight: normal;
 	margin: 3px 0;
@@ -205,26 +205,26 @@ a.button:hover,
 }
 
 .form-wrapper button {
-    background: #34a8c4 none repeat scroll 0 0;
+    background: #000000 none repeat scroll 0 0;
 }
 
 .form-wrapper button:active,
 .form-wrapper button:focus,
 .form-wrapper button:hover{		
-    background: #3cb1cb;
+    background: #393939;
 }
 
 .form-wrapper button:before {
-    border-color: transparent #34a8c4 transparent;
+    border-color: transparent #000000 transparent;
 }
 
 .form-wrapper button:hover:before{
-    border-right-color: #3cb1cb;
+    border-right-color: #000000;
 }
 
 .form-wrapper input:focus {
 	box-shadow: none;
-	border: thin solid #34a8c4;
+	border: thin solid #000000;
     outline: 0;
     background: #fff;
 }
@@ -238,7 +238,7 @@ nav.footer {
 }
 
 nav.footer a {
-    color: #0192b5;
+    color: #000000;
     font-size: 0.75rem;
     font-weight: normal;
     padding: 0.37em 0;
@@ -251,8 +251,8 @@ nav.footer a:nth-of-type(2n+1) {
 }
 
 .blurb {
-    border-left: thin solid #0192b5;
-    color: #0192b5;
+    border-left: thin solid #000000;
+    color: #000000;
     font-weight: normal;
 }
 .blurb h3,
@@ -327,9 +327,9 @@ footer.page {
 
 .mini_button:hover
 {
-	border: thin solid #52b69a;
+	border: thin solid #000000;
 	background: #FFF none repeat-x center left;
-	color: #52b69a;
+	color: #000000;
 }
 
 .item-in-progress {
@@ -342,7 +342,7 @@ footer.page {
 	-moz-border-right-colors: none;
 	-moz-border-top-colors: none;
 	background: #fff none repeat scroll 0 0;
-	border-color: #d5dce1 #d5dce1 #52b69a;
+	border-color: #d5dce1 #d5dce1 #000000;
 	border-image: none;
 	border-style: solid;
 	border-width: 1px 1px 2px;
@@ -457,7 +457,7 @@ footer.page {
 }
 
 .design2016 h1.browsing_filter_title {
-	border-color: #d5dce1 #d5dce1 #52b69a;
+	border-color: #d5dce1 #d5dce1 #000000;
 	border-style: solid;
 	border-width: thin;
 }
@@ -633,12 +633,12 @@ footer.page {
 	
 	.user-links .menu-link {
 		background: #fff none repeat scroll 0 0;
-		border: thin solid #0192b5;
+		border: thin solid #000000;
 		border-radius: 0.3em;
 		-webkit-border-radius: 0.3em;
 		-moz-border-radius: 0.3em;
 		box-shadow: none;
-		color: #0192b5;
+		color: #000000;
 		display: inline-block;
 		font-size: 0.9rem;
 		font-weight: normal;
@@ -725,7 +725,7 @@ footer.page {
 	li.my_account_links_inactive h1.subtitle, 
 	.mini-cart h3.subtitle {
 		background: #FFF none repeat scroll 0 0;
-		border-bottom: thin solid #52b69a;
+		border-bottom: thin solid #000000;
 		border-top: none;
 	}
 	
