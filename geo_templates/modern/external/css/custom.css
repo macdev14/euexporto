@@ -17,12 +17,13 @@
  */
 
 html {
-	font-family: "trebuchet MS","Tahoma";
-	background-color: #f5f5f1;
+	font-family: sans-serif;
+    font-weight: lighter;
+	background-color: #ffffff;
 }
 
 body {
-    background-color: #f5f5f1;
+    background-color: #ffffff;
 }
 
 h3 {
