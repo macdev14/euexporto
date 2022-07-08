@@ -76,6 +76,7 @@ a.login_link:visited {
 
 
 #login_box {
+	border-radius: 10px;
 	width: auto;
 	/*border: 4px solid #73879C;*/
 	padding: 2px;
