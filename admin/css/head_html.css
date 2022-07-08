@@ -47,12 +47,12 @@ div#logo h1 a span {
 }
 
 div.geoCoreLogo h1 a {
-	background: url('../admin_images/design/header_logo_geocore.png') no-repeat; /*EDIT PER STYLESHEET*/
+	/*background: url('../admin_images/design/header_logo_geocore.png') no-repeat; EDIT PER STYLESHEET*/
 	color: #ECF0F1;
 }
 
 div.geoTurboLogo h1 a {
-	background: url('../admin_images/design/header_logo_geoturbo.png') no-repeat;
+	/*background: url('../admin_images/design/header_logo_geoturbo.png') no-repeat;*/
 	color: #ECF0F1;
 }
 

@@ -2,8 +2,8 @@
 
 /* 16.09.0-79-gb63e5d8 */
 body {
-	background: #172D44;
-	color: #5A738E;
+	background: #000000;
+	color: #000000;
 	font-weight: normal;
 	font-family: Arial, sans-serif;
 	text-align: center;
@@ -63,15 +63,15 @@ a:hover {
 }
 
 a.login_link {
-	color: #0B709F;
+	color: #000000;
 }
 
 a.login_link:active {
-	color: #0B709F;
+	color: #000000;
 }
 
 a.login_link:visited {
-	color: #0B709F;
+	color: #000000;
 }
 
 
@@ -120,7 +120,7 @@ a.login_link:visited {
 	margin: 0px;
 	font-size: 22px;
 	text-align: center;
-	color: #0B709F;
+	color: #000000;
 	padding-top: 15px;
 }
 
@@ -128,7 +128,7 @@ a.login_link:visited {
 	margin: 0px;
 	font-size: 14px;
 	text-align: center;
-	color: #0B709F;
+	color: #000000;
 }
 
 #login_form_fields {

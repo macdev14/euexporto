@@ -641,7 +641,7 @@ class geoAdmin {
 			}
 		}
 		$type = 'Core';
-		$typeDisplay = 'GeoCore CE';
+		$typeDisplay = 'Euexporto';
 
 		$view->product_type = $type;
 		$view->product_typeDisplay = $typeDisplay;

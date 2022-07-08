@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>GeoCore CE Admin Panel</title>
+		<title>Euexporto - Painel Admin</title>
         {if $charset}<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />{/if}
 
         {* 3rd Party CSS -- Loaded separately here because our stuff needs to override some of it later *}
@@ -211,13 +211,12 @@
 					<footer>
 						<div class="pull-right">
 							<div id="footer-top">
-								<p>GeoCore CE (Community Edition) DB Ver. {$product_version}
-								{if !$white_label}<span style="white-space:nowrap;">[ <a href="https://github.com/geodesicsolutions-community/geocore-community/releases" target="_blank">Changelog</a> ]</span>{/if} </p>
+								<p>Euexporto </p>
 							</div>
 							<div id="footer">
 								<div id="footer-inside">
 									<p>
-                                        Distributed freely under <a href="https://github.com/geodesicsolutions-community/geocore-community/blob/42e315b06b57a3a42b1352713258866fc691be70/LICENSE" target="_blank">MIT License</a>
+                                        
                                     </p>
 								</div>
 							</div>

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Validating Login Credentials</title>
+<title>Validando Credenciais</title>
 	{* 3rd Party CSS -- Loaded separately here because our stuff needs to override some of it later *}
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -39,8 +39,8 @@
 				{/if}
 			{/if}
 			<input type="hidden" name="b[sessionId]" value="{$session_id|escape}" />
-			<i class="fa fa-key fa-spin" style="font-size: 48pt; color: #172D44;"></i><br><br>
-			<div style="font-size: 12pt; color: #172D44;">Validating Login Credentials...</div>
+			<i class="fa fa-key fa-spin" style="font-size: 48pt; color: #000000;"></i><br><br>
+			<div style="font-size: 12pt; color: #000000;">Validando Credenciais...</div>
 		</form>
 	</div>
 
