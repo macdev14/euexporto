@@ -86,7 +86,7 @@
 			<div id="login_box">
 				<div id="login_sub">
 					<div id="login_right">
-						<h1 id="login_product_name">Euexporto - Admin Panel Login</h1>
+						<h1 id="login_product_name">euexporto - Admin Panel Login</h1>
 						<h2 id="login_software_type">Somente Acesso Autorizado</h2>
 						<div id="login_form_fields">
                             <div id="login_username_block">{$username_label}{$username_field}</div>
@@ -97,7 +97,7 @@
 							<input type="hidden" id="cookieexists" name="cookieexists" value="false" />
 							<input type="submit" value="Login" class="btn btn-default submit" />
 						</div>
-						<div id="login_copyright">Copyright Euexporto 2022. All Rights Reserved.</div>
+						<div id="login_copyright">Copyright euexporto 2022. Todos os Direitos Reservados.</div>
 					</div>
 					<div id="login_bottom"></div>
 				</div>
